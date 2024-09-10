@@ -1,0 +1,9 @@
+apiVersion: app.redislabs.com/v1alpha1
+kind: RedisEnterpriseDatabase
+metadata:
+  name: redisdb
+  namespace: redis
+spec:
+  memorySize: 1GB
+  redisEnterpriseCluster:
+    name: redis-cluster

@@ -1,0 +1,7 @@
+apiVersion: "app.redislabs.com/v1"
+kind: "RedisEnterpriseCluster"
+metadata:
+  name: redis-cluster
+  namespace: redis
+spec:
+  nodes: 1
