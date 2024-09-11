@@ -4,7 +4,7 @@
 #   name: redis-cluster-ui
 #   namespace: redis
 #   labels:
-#     app: redis-cluster
+#     app: redis-cluster-ui
 # spec:
 #   ports:
 #     - port: 8443
@@ -12,7 +12,7 @@
 #       targetPort: 8443
 #   type: LoadBalancer
 #   selector:
-#     name: redis-cluster
+#     app: redis-cluster-operator
 # ---
 apiVersion: "app.redislabs.com/v1"
 kind: "RedisEnterpriseCluster"

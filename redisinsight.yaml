@@ -9,6 +9,7 @@ metadata:
                                    # application's environment
                                    # variables `RI_APP_HOST` and
                                    # `RI_APP_PORT`
+  namespace: redisinsight
 spec:
   type: LoadBalancer
   ports:
@@ -22,6 +23,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: redisinsight #deployment name
+  namespace: redisinsight
   labels:
     app: redisinsight #deployment label
 spec:
