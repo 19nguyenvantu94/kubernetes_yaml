@@ -19,3 +19,13 @@ redisdb, redisdb-headless
 
 kubectl get secret <cluster-name> -o jsonpath='{.data.username}' | base64 --decode
 kubectl get secret <cluster-name> -o jsonpath='{.data.password}' | base64 --decode
+
+
+--- install rabbitmq
+kubectl apply -k rabbitmq/.
+
+kubectl create -f https://download.elastic.co/downloads/eck/2.14.0/crds.yaml
+
+kubectl apply -f https://download.elastic.co/downloads/eck/2.14.0/operator.yaml
+
+kubectl -n elastic-system logs -f statefulset.apps/elastic-operator
