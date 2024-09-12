@@ -11,3 +11,5 @@ spec:
     count: 1
     config:
       node.store.allow_mmap: false
+    environment: 
+     - xpack.security.enrollment.enabled: false
