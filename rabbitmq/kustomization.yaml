@@ -4,7 +4,7 @@ commonLabels:
   app: rabbitmq
 
 resources:
-# - namespace.yaml
+- namespace.yaml
 - configMap.yaml
 - deployment.yaml
 - deployment_rbac.yaml
