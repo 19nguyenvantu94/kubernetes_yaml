@@ -222,6 +222,12 @@ spec:
         app.kubernetes.io/instance: mongodb-enterprise-operator
     spec:
       serviceAccountName: mongodb-enterprise-operator
+      externalAccess: 
+        externalService:
+          annotations:
+          spec:
+            type: LoadBalancer
+            port: 27017
       securityContext:
         runAsNonRoot: true
         runAsUser: 2000
