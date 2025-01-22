@@ -86,7 +86,7 @@ spec:
           - name: RABBITMQ_DEFAULT_USER
             value: "admin"
           - name: RABBITMQ_DEFAULT_PASS
-            value: "admin!123"
+            value: "admin123"
       volumes:
         - name: config-volume
           configMap:
