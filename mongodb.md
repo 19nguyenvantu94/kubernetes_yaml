@@ -2,3 +2,7 @@ kubectl apply -f https://raw.githubusercontent.com/mongodb/mongodb-enterprise-ku
 
 kubectl apply -f https://raw.githubusercontent.com/mongodb/mongodb-enterprise-kubernetes/1.30/crds.yaml
 
+
+
+kubectl describe deployments mongodb-enterprise-operator -n mongodb
+
