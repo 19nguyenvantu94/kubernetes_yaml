@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: nginx-ingress
+---
+apiVersion: charts.nginx.org/v1alpha1
+kind: NginxIngress
+metadata:
+  name: nginxingress-sample
+  namespace: nginx-ingress
+spec:
+  controller:
+    image:
+      pullPolicy: IfNotPresent
+      repository: nginx/nginx-ingress
+      tag: 4.0.0-ubi
+    ingressClass:
+      name: nginx
+    kind: deployment
+    nginxplus: false
+    replicaCount: 1
+    serviceAccount:
+      imagePullSecretName: ""

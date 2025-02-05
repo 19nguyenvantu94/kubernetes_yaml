@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-echo
+  namespace: multiapp
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: multiappauthen.online
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: blazorwebidentity
+                port:
+                  number: 8080
