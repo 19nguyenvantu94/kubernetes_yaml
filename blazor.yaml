@@ -3,10 +3,20 @@ kind: Ingress
 metadata:
   name: ingress-echo
   namespace: multiapp
+  annotations:
+    cert-manager.io/issuer: letsencrypt-nginx
+    nginx.org/client-max-body-size: "4m"
+    nginx.org/proxy-buffering: "on"
+    nginx.org/proxy-buffer-size: "256k"
+    nginx.org/proxy-buffers: "4 512k"
 spec:
   ingressClassName: nginx
+  tls:
+  - hosts:
+    - blazorwebidentity.multiappauthen.online
+    secretName: letsencrypt-nginx
   rules:
-    - host: multiappauthen.online
+    - host: blazorwebidentity.multiappauthen.online
       http:
         paths:
           - path: /
@@ -15,4 +25,4 @@ spec:
               service:
                 name: blazorwebidentity
                 port:
-                  number: 8080
+                  number: 80
