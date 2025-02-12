@@ -29,3 +29,7 @@ kubectl create -f https://download.elastic.co/downloads/eck/2.14.0/crds.yaml
 kubectl apply -f https://download.elastic.co/downloads/eck/2.14.0/operator.yaml
 
 kubectl -n elastic-system logs -f statefulset.apps/elastic-operator
+
+kubectl create ns sslcert
+
+kubectl create secret tls my-tls-secret --cert=certificate.crt --key=private.key -n sslcert 

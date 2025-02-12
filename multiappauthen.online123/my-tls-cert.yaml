@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: my-tls-cert
+  namespace: sslcert
+spec:
+  secretName: my-tls-secret
+  issuerRef:
+    name: custom-ca-issuer
+    kind: ClusterIssuer
+  dnsNames:
+    - blazorwebidentity.multiappauthen.online
