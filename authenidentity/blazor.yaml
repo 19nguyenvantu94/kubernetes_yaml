@@ -14,7 +14,7 @@ spec:
   tls:
   - hosts:
     - blazorwebidentity.multiappauthen.online
-    secretName: letsencrypt-nginx
+    secretName: letsencrypt-nginx-private-key
   rules:
     - host: blazorwebidentity.multiappauthen.online
       http:
