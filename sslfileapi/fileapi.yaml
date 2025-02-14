@@ -1,10 +1,10 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ingress-blazoridentityapi
+  name: ingress-blazorfileapi
   namespace: multiapp
   annotations:
-    cert-manager.io/issuer: letsencrypt-nginx-blazoridentityapi
+    cert-manager.io/issuer: letsencrypt-nginx-blazorfileapi
     nginx.org/client-max-body-size: "4m"
     nginx.org/proxy-buffering: "on"
     nginx.org/proxy-buffer-size: "256k"
@@ -14,7 +14,7 @@ spec:
   tls:
   - hosts:
     - blazorfileapi.multiappauthen.online
-    secretName: letsencrypt-nginx-blazoridentityapi-host
+    secretName: letsencrypt-nginx-blazorfileapi-host
   rules:
     - host: blazorfileapi.multiappauthen.online
       http:
@@ -23,6 +23,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: blazoridentityapi
+                name: blazorfiles
                 port:
                   number: 8080
