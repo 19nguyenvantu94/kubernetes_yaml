@@ -13,10 +13,10 @@ spec:
   ingressClassName: nginx
   tls:
   - hosts:
-    - blazorfileapi.multiappauthen.online
-    secretName: letsencrypt-nginx-blazoridentityapi-host
+    - blazoridentityapi.multiappauthen.online
+    secretName: letsencrypt-nginx-blazoridentityapi-secret
   rules:
-    - host: blazorfileapi.multiappauthen.online
+    - host: blazoridentityapi.multiappauthen.online
       http:
         paths:
           - path: /
