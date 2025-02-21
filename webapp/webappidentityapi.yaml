@@ -13,6 +13,8 @@ metadata:
     nginx.ingress.kubernetes.io/session-cookie-name: "affinity"
     nginx.ingress.kubernetes.io/session-cookie-expires: "14400"
     nginx.ingress.kubernetes.io/session-cookie-max-age: "14400"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
 spec:
   ingressClassName: nginx
   tls:
