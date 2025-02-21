@@ -31,4 +31,4 @@ kubectl apply -f https://download.elastic.co/downloads/eck/2.14.0/operator.yaml
 kubectl -n elastic-system logs -f statefulset.apps/elastic-operator
 
 kubectl port-forward svc/redis-service 6379:6379  -n redis
-kubectl port-forward svc/redis-service 6379:6379  -n redis
+kubectl port-forward svc/rabbitmq 15672:15672  -n rabbitmq
