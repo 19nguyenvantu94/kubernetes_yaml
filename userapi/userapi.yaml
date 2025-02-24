@@ -14,7 +14,7 @@ spec:
   tls:
   - hosts:
     - blazoruserapi.multiappauthen.online
-    secretName: letsencrypt-nginx-blazoruserapi-host
+    secretName: letsencrypt-nginx-blazoruserapi-host-1
   rules:
     - host: blazoruserapi.multiappauthen.online
       http:

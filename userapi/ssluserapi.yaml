@@ -13,7 +13,7 @@ spec:
     email: nguyenvantu0207943@gmail.com
     server: https://acme-v02.api.letsencrypt.org/directory
     privateKeySecretRef:
-      name: letsencrypt-nginx-private-key-blazoruserapi
+      name: letsencrypt-nginx-private-key-blazoruserapi-1
     solvers:
       # Use the HTTP-01 challenge provider
       - http01:
