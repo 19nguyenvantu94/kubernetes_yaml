@@ -5,22 +5,16 @@ metadata:
   namespace: multiapp
   annotations:
     cert-manager.io/issuer: letsencrypt-nginx-webapp
-    nginx.ingress.kubernetes.io/use-regex: "true"
-    nginx.ingress.kubernetes.io/rewrite-target: /$1
-    nginx.org/client-max-body-size: "6m"
-    nginx.org/proxy-buffering: "off"
-    nginx.org/proxy-buffer-size: "512k"
-    nginx.org/proxy-buffers: "4 1024k"
-    nginx.ingress.kubernetes.io/affinity: "cookie"
-    nginx.ingress.kubernetes.io/session-cookie-name: "affinity"
-    nginx.ingress.kubernetes.io/session-cookie-expires: "14400"
-    nginx.ingress.kubernetes.io/session-cookie-max-age: "14400"
+    nginx.org/client-max-body-size: "4m"
+    nginx.org/proxy-buffering: "on"
+    nginx.org/proxy-buffer-size: "256k"
+    nginx.org/proxy-buffers: "4 512k"
 spec:
   ingressClassName: nginx
   tls:
   - hosts:
     - webapp.multiappauthen.online
-    secretName: letsencrypt-nginx-webapp-private-key
+    secretName: letsencrypt-nginx-webapp-private-key-123
   rules:
     - host: webapp.multiappauthen.online
       http:
