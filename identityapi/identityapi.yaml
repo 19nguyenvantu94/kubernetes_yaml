@@ -9,12 +9,16 @@ metadata:
     nginx.org/proxy-buffering: "on"
     nginx.org/proxy-buffer-size: "256k"
     nginx.org/proxy-buffers: "4 512k"
+    nginx.ingress.kubernetes.io/affinity: "cookie"
+    nginx.ingress.kubernetes.io/session-cookie-name: "affinity"
+    nginx.ingress.kubernetes.io/session-cookie-expires: "14400"
+    nginx.ingress.kubernetes.io/session-cookie-max-age: "14400"
 spec:
   ingressClassName: nginx
   tls:
   - hosts:
     - blazoridentityapi.multiappauthen.online
-    secretName: letsencrypt-nginx-blazoridentityapi
+    secretName: letsencrypt-nginx-blazoridentityapi-secret-1
   rules:
     - host: blazoridentityapi.multiappauthen.online
       http:
@@ -25,4 +29,4 @@ spec:
               service:
                 name: blazoridentityapi
                 port:
-                  number: 80
+                  number: 8080

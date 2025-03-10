@@ -2,7 +2,7 @@
 apiVersion: cert-manager.io/v1
 kind: Issuer
 metadata:
-  name: letsencrypt-nginx-webapp
+  name: letsencrypt-nginx-blazorfileapi
   namespace: multiapp
 spec:
   # ACME issuer configuration
@@ -13,7 +13,7 @@ spec:
     email: nguyenvantu0207943@gmail.com
     server: https://acme-v02.api.letsencrypt.org/directory
     privateKeySecretRef:
-      name: letsencrypt-nginx-webapp-private-key-issuer-1
+      name: letsencrypt-nginx-private-key-blazorfileapi
     solvers:
       # Use the HTTP-01 challenge provider
       - http01:

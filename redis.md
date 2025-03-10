@@ -33,3 +33,5 @@ kubectl -n elastic-system logs -f statefulset.apps/elastic-operator
 kubectl create ns sslcert
 
 kubectl create secret tls my-tls-secret --cert=certificate.crt --key=private.key -n sslcert 
+kubectl port-forward svc/redis-service 6379:6379  -n redis
+kubectl port-forward svc/rabbitmq 15672:15672  -n rabbitmq
