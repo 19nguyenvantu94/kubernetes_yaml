@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-echo
+  namespace: kube-prometheus-stack
+  annotations:
+    cert-manager.io/cluster-issuer: "custom-ca-issuer"
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - grafana.multiappauthen.online
+    secretName: letsencrypt-nginx-private-key-1-host
+  rules:
+    - host: grafana.multiappauthen.online
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: kube-stack-grafana
+                port:
+                  number: 80

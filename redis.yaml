@@ -65,6 +65,5 @@ spec:
       port: 6379
       protocol: TCP
       targetPort: 6379
-      nodePort: 32767
-  type: LoadBalancer
+  type: ClusterIP
 
