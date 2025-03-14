@@ -36,7 +36,7 @@ kubectl create secret tls my-tls-secret --cert=certificate.crt --key=private.key
 kubectl port-forward svc/redis-service 6379:6379  -n redis
 kubectl port-forward svc/rabbitmq 15672:15672  -n rabbitmq
 
-helm install rabbitmq bitnami/rabbitmq --namespace rabbitmq --set auth.username=admin --set auth.password=admin123 --set auth.existingSecret=rabbitmq-secret --set service.type=LoadBalancer 
+helm install rabbitmq bitnami/rabbitmq --namespace rabbitmq --set auth.username=admin --set auth.password=admin123 --set auth.erlangCookie=myCookie --set auth.existingSecret=rabbitmq-secret --set resources.limits.memory="128Mi" --set resources.requests.cpu="0.09" --set resources.requests.memory="128Mi" --set plugins="rabbitmq_management rabbitmq_prometheus rabbitmq_stream"  --set extraConfiguration="log.console.level = info"
 
 helm uninstall rabbitmq --namespace rabbitmq
 
