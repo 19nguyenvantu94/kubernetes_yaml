@@ -27,7 +27,7 @@ spec:
     image: redis:5.0.4
     resources:
       requests:
-        cpu: "50m"     # Yêu cầu ít nhất 0.05 core (~5%)
+        cpu: "100m"     # Yêu cầu ít nhất 0.05 core (~5%)
         memory: "64Mi"
       limits:
         cpu: "100m"    # Giới hạn tối đa 0.1 core (~10%)
