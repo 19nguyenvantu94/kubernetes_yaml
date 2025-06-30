@@ -14,46 +14,61 @@ kind: Namespace
 metadata:
   name: redis
 ---
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: StatefulSet
 metadata:
-  labels:
-    app: redis
   name: redis
   namespace: redis
 spec:
-  containers:
-  - name: redis
-    image: redis:5.0.4
-    resources:
-      requests:
-        cpu: "100m"     # Yêu cầu ít nhất 0.05 core (~5%)
-        memory: "64Mi"
-      limits:
-        cpu: "100m"    # Giới hạn tối đa 0.1 core (~10%)
-        memory: "128Mi"
-    command:
-      - redis-server
-      - "/redis-master/redis.conf"
-    env:
-    - name: MASTER
-      value: "true"
-    ports:
-    - containerPort: 6379
-    volumeMounts:
-    - mountPath: /redis-master-data
+  serviceName: "redis"  # Cần có headless service đi kèm
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis
+  template:
+    metadata:
+      labels:
+        app: redis
+    spec:
+      containers:
+      - name: redis
+        image: redis:5.0.4
+        command:
+          - redis-server
+          - "/redis-master/redis.conf"
+        env:
+        - name: MASTER
+          value: "true"
+        ports:
+        - containerPort: 6379
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "64Mi"
+          limits:
+            cpu: "100m"
+            memory: "128Mi"
+        volumeMounts:
+        - mountPath: /redis-master-data
+          name: data
+        - mountPath: /redis-master
+          name: config
+      volumes:
+      - name: config
+        configMap:
+          name: example-redis-config
+          items:
+          - key: redis-config
+            path: redis.conf
+  volumeClaimTemplates:
+  - metadata:
       name: data
-    - mountPath: /redis-master
-      name: config
-  volumes:
-    - name: data
-      emptyDir: {}
-    - name: config
-      configMap:
-        name: example-redis-config
-        items:
-        - key: redis-config
-          path: redis.conf
+    spec:
+      accessModes: ["ReadWriteOnce"]
+      resources:
+        requests:
+          storage: 1Gi
+
 ---
 apiVersion: v1
 kind: Service
