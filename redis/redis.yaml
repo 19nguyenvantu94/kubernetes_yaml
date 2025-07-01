@@ -8,6 +8,11 @@ data:
     maxmemory 2mb
     maxmemory-policy allkeys-lru
     requirepass demopasswordchangeme123
+    bind 0.0.0.0
+    protected-mode no
+    port 6379
+    maxmemory 64mb
+    maxmemory-policy allkeys-lru
 ---
 apiVersion: v1
 kind: Namespace
@@ -43,7 +48,7 @@ spec:
         - containerPort: 6379
         resources:
           requests:
-            cpu: "100m"
+            cpu: "50m"
             memory: "64Mi"
           limits:
             cpu: "100m"
