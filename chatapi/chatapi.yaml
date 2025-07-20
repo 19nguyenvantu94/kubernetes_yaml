@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-blazorchatapi
+  namespace: multiapp
+  annotations:
+    cert-manager.io/issuer: letsencrypt-nginx-blazorchatapi
+    nginx.org/client-max-body-size: "4m"
+    nginx.org/proxy-buffering: "on"
+    nginx.org/proxy-buffer-size: "256k"
+    nginx.org/proxy-buffers: "4 512k"
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - blazorchatapi.multiappauthen.online
+    secretName: letsencrypt-nginx-blazorchatapi-host-1
+  rules:
+    - host: blazorchatapi.multiappauthen.online
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: blazorchatapi
+                port:
+                  number: 8080
